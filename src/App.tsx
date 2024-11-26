@@ -6,6 +6,8 @@ import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
 import Transition from './components/Transition/transition';
 import Button from './components/Button/button';
+import Icon from './components/Icon/icon';
+import Input from './components/Input/input';
 
 library.add(fas);
 function App() {
@@ -13,6 +15,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Icon icon="search" />
+        <Input size="lg" icon="search" />
         <Menu defaultIndex='0' onSelect={(index) => {alert(index)}} defaultOpenSubMenus={['2']}>
           <MenuItem>
             cool link1
