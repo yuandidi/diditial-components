@@ -76,7 +76,7 @@ describe('test AutoComplete component', () => {
     })
     fireEvent.click(document)
     expect(screen.queryByText('ab')).not.toBeInTheDocument()
-  })
+  })                       
   it('renderOption should generate the right template', async () => {
     render(<AutoComplete {...testPropsWithCustomRender}/>)
     const inputNode = screen.getByPlaceholderText('auto-complete-2') as HTMLInputElement
