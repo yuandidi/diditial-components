@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
-import { FC, InputHTMLAttributes } from "react";
+import { FC, forwardRef, InputHTMLAttributes } from "react";
 import Icon from "../Icon/icon";
 type InputSize = 'lg' | 'sm';
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
@@ -16,8 +16,15 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
   append?: string | React.ReactElement;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-
-export const Input: FC<InputProps> = ({disabled, size, icon, prepend, append, ...restProps}) => {
+/**
+ * Input 输入框 通过鼠标或键盘输入内容，是最基础的表单域的包装。
+ * ### 引用方法
+ * 
+ * ~~~js
+ * import { Input } from 'vikingship'
+ * ~~~
+ */
+export const Input = forwardRef<HTMLInputElement, InputProps>(({disabled, size, icon, prepend, append, ...restProps}, ref) => {
   const classes = classNames('viking-input-wrapper', {
     [`input-size-${size}`]: size,
     'input-group': prepend || append,
@@ -40,6 +47,7 @@ export const Input: FC<InputProps> = ({disabled, size, icon, prepend, append, ..
       {prepend && <div className="-viking-input-group-prepend">{prepend}</div>}
       {icon && <div className="icon-wrapper"><Icon icon={icon} title={`title-${icon}`}/></div>}
       <input
+        ref={ref}
         className="viking-input-inner"
         disabled={disabled}
         {...restProps}
@@ -47,6 +55,6 @@ export const Input: FC<InputProps> = ({disabled, size, icon, prepend, append, ..
       {append && <div className="input-group-append">{append}</div>}
     </div>
   )
-}
+})
 
 export default Input

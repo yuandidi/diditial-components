@@ -9,7 +9,6 @@ const testProps: TabsProps = {
   defaultIndex: 1,
   onSelect: jest.fn()
 }
-let wrapper: RenderResult
 describe('test Tabs Component', () => {
   beforeEach(() => {
     // eslint-disable-next-line testing-library/no-render-in-setup
