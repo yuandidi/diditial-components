@@ -7,7 +7,7 @@ import { Meta, StoryObj } from "@storybook/react";
 type StoryProps = ComponentProps<typeof AutoComplete>;
 const meta: Meta<StoryProps> = {
   component: AutoComplete,
-  title: "autocomplete",
+  title: "Autocomplete",
   tags: ['autodocs'],
 } 
 

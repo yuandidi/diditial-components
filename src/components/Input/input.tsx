@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
-import { FC, forwardRef, InputHTMLAttributes } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import Icon from "../Icon/icon";
 type InputSize = 'lg' | 'sm';
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
@@ -24,7 +24,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
  * import { Input } from 'vikingship'
  * ~~~
  */
-export const Input = forwardRef<HTMLInputElement, InputProps>(({disabled, size, icon, prepend, append, ...restProps}, ref) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(({disabled, size, icon, prepend, append, ...restProps}, ref,) => {
   const classes = classNames('viking-input-wrapper', {
     [`input-size-${size}`]: size,
     'input-group': prepend || append,
