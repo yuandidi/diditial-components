@@ -14,7 +14,7 @@ export const UploadList: FC<UploadListProps> = ({fileList, onRemove}) => {
       {fileList.map(item => {
         return (
           <li className="viking-upload-list-item" key={item.uid}>
-            <span className={`file-name file-name-${item.status}`}>
+            <span data-testid={`file-name-${item.status}`} className={`file-name file-name-${item.status}`}>
               <Icon icon="file-alt" theme="secondary"/>
               {item.name}
             </span>

@@ -1,8 +1,7 @@
 import { FC, useRef, useState } from "react";
-import Button from "../Button/button";
 import UploadList from "./uploadList";
 import axios from "axios";
-import { on } from "events";
+import Dragger from "./dragger";
 
 type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
 
@@ -21,14 +20,39 @@ export interface UploadProps {
   action: string;
   defaultFileList?: UploadFile[];
   beforeUpload?: (file: File) => boolean | Promise<File>;
-  onProgress?: (percentage: number, file: File) => void;
-  onSuccess?: (data: any, file: File) => void;
-  onError?: (err: any, file: File) => void
-  onChange?: (file: File) => void;
+  onProgress?: (percentage: number, file: UploadFile) => void;
+  onSuccess?: (data: any, file: UploadFile) => void;
+  onError?: (err: any, file: UploadFile) => void
+  onChange?: (file: UploadFile) => void;
   onRemove?: (file: UploadFile) => void;
+  headers?: {[key: string]: any};
+  name?: string;
+  data?: {[key: string]: any};
+  withCredentials?: boolean;
+  accept?: string;
+  multiple?: boolean;
+  drag?: boolean;
+  children?: React.ReactNode;
 }
 
-export const Upload: FC<UploadProps> = ({action, defaultFileList, onChange, beforeUpload, onProgress, onSuccess, onError, onRemove}) => {
+export const Upload: FC<UploadProps> = ({
+  action, 
+  defaultFileList, 
+  onChange, 
+  beforeUpload, 
+  onProgress, 
+  onSuccess, 
+  onError, 
+  onRemove,
+  headers,
+  name = 'file',
+  data,
+  withCredentials,
+  accept,
+  multiple,
+  children,
+  drag
+}) => {
   const fileInput = useRef<HTMLInputElement>(null)
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || [])
   const updateFileList = (updateFile: UploadFile, updateObj: Partial<UploadFile>) => {
@@ -88,56 +112,74 @@ export const Upload: FC<UploadProps> = ({action, defaultFileList, onChange, befo
       percent: 0,
       raw: file,
     }
-    setFileList([_file, ...fileList])
+    //setFileList([_file, ...fileList])
+    setFileList(preList => {
+      return [_file, ...preList]
+    })
     const formData = new FormData()
-    formData.append(file.name, file)
+    formData.append(name || 'file', file)
+    if(data) {
+      Object.keys(data).forEach(key => {
+        formData.append(key, data[key])
+      })
+    }
     axios.post(action, formData, {
       headers: {
+        ...headers,
         'Content-Type': 'multipart/form-data'
       },
+      withCredentials,
       onUploadProgress: (e) => {
         let percentage = e.total ? Math.round((e.loaded * 100) / e.total) || 0 : 0
         if(percentage < 100) {
           updateFileList(_file, {percent: percentage, status: 'uploading'})
           if(onProgress) {
-            onProgress(percentage, file)
+            onProgress(percentage, _file)
           }
         }
       },
     }).then(res => {
-      console.log(res)
       updateFileList(_file, {status: 'success', response: res.data})
       if(onSuccess) {
-        onSuccess(res.data, file)
+        onSuccess(res.data, _file)
       }
       if(onChange) {
-        onChange(file)
+        onChange(_file)
       }
     }).catch(error => {
       console.error(error)
       updateFileList(_file, {status: 'error', error})
       if(onError) {
-        onError(error, file)
+        onError(error, _file)
       }
       if(onChange) {
-        onChange(file)
+        onChange(_file)
       }
     })
   }
-  console.log(fileList)
   return(
     <div
       className="viking-upload-component"
     >
-      <Button btnType="primary"
+      <div className="viking-upload-input"
+        style={{display: 'inline-block'}}
         onClick={handleClick}
-      >Upload File</Button>
+      >
+        {drag ? 
+        <Dragger onFile={(files) => {uploadFiles(files)}}>
+          {children}
+        </Dragger> : 
+        children}
+      </div>
       <input
         className="viking-file-input"
+        data-testid="viking-file-input"
         style={{display: 'none'}}
         type="file"
         ref={fileInput}
         onChange={handleFileChange}
+        accept={accept}
+        multiple={multiple}
       />
       <UploadList
         fileList={fileList}
@@ -146,5 +188,4 @@ export const Upload: FC<UploadProps> = ({action, defaultFileList, onChange, befo
     </div>
   )
 }
-
 export default Upload;
