@@ -37,18 +37,18 @@ export const SelectContext = React.createContext<ISelectContext>({selectedValues
  * ### 引用方法
  * 
  * ~~~js
- * import { Select } from 'vikingship'
+ * import { Select } from 'didiship'
  * // 然后可以使用 <Select> 和 <Select.Option>
  * ~~~
  */
-export const Select: FC<SelectProps> = ({ defaultValue, placeholder = '请选择', disabled, name = 'viking-select', onChange, children, multiple, onVisibleChange }) => {
+export const Select: FC<SelectProps> = ({ defaultValue, placeholder = '请选择', disabled, name = 'didi-select', onChange, children, multiple, onVisibleChange }) => {
   const [value, setValue] = useState(defaultValue ? defaultValue : '')
   const [menuOpen, setMenuOpen] = useState(false)
   const [selectedValues, setSelectedValues] = useState<string[]>(Array.isArray(defaultValue) ? defaultValue : [])
   const containerRef = useRef<HTMLDivElement>(null)
   const input = useRef<HTMLInputElement>(null)
   const containerWidth = useRef<number>(0)
-  const containerClass = classNames('viking-select', {
+  const containerClass = classNames('didi-select', {
     'menu-is-open': menuOpen,
     'is-disabled': disabled,
     'is-multiple': multiple
@@ -122,7 +122,7 @@ export const Select: FC<SelectProps> = ({ defaultValue, placeholder = '请选择
   })
   return (
     <div className={containerClass} ref={containerRef}>
-      <div className="viking-select-input"  onClick={handleClick}>
+      <div className="didi-select-input"  onClick={handleClick}>
         <Input
           ref={input}
           placeholder={placeholder}
@@ -138,16 +138,16 @@ export const Select: FC<SelectProps> = ({ defaultValue, placeholder = '请选择
           timeout={300}
           animation="zoom-in-top"
         >
-          <ul className="viking-select-dropdown">
+          <ul className="didi-select-dropdown">
             {renderOption()}
           </ul>
         </Transition>
       </SelectContext.Provider>
-      <div className="viking-selected-tags" style={{maxWidth: containerWidth.current - 32}}>
+      <div className="didi-selected-tags" style={{maxWidth: containerWidth.current - 32}}>
         { multiple &&
           selectedValues.map((value, index) => {
             return (
-              <span data-testid="viking-tag" className="viking-tag" key={`tag-${index}`} onClick={(e) => handleOptionClick(e, value)}>
+              <span data-testid="didi-tag" className="didi-tag" key={`tag-${index}`} onClick={(e) => handleOptionClick(e, value)}>
                 {value}
                 <Icon icon="times"/>
               </span>

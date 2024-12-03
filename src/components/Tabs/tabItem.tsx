@@ -1,4 +1,4 @@
-import { FC } from "react"
+import React,{ FC } from "react"
 
 export interface TabItemProps {
   label: string | React.ReactElement
@@ -7,7 +7,7 @@ export interface TabItemProps {
 }
 
 export const TabItem: FC<TabItemProps> = ({children}) => {
-  return <div className="viking-tab-panel">
+  return <div className="didi-tab-panel">
     {children}
   </div>
 }

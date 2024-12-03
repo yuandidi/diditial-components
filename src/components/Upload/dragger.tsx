@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC, useState } from "react";
+import React,{ FC, useState } from "react";
 
 interface DraggerProps {
   onFile?: (files: FileList) => void;
@@ -8,7 +8,7 @@ interface DraggerProps {
 
 export const Dragger: FC<DraggerProps> = ({onFile, children}) => {
   const [dragOver, setDragOver] = useState(false)
-  const klass = classNames('viking-uploader-dragger', {
+  const klass = classNames('didi-uploader-dragger', {
     'is-dragover' : dragOver
   })
   const handleDrop = (e: React.DragEvent<HTMLElement>) => {

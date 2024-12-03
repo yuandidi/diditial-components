@@ -13,7 +13,7 @@ describe('test Input component', () => {
     render(<Input {...defaultProps}/>)
     const testNode = screen.getByPlaceholderText('test-input') as HTMLInputElement
     expect(testNode).toBeInTheDocument()
-    expect(testNode).toHaveClass('viking-input-inner')
+    expect(testNode).toHaveClass('didi-input-inner')
     fireEvent.change(testNode, { target: { value: '23' } })
     expect(defaultProps.onChange).toHaveBeenCalled()
     expect(testNode.value).toEqual('23')
@@ -27,7 +27,7 @@ describe('test Input component', () => {
     render(<Input placeholder="sizes" size="lg" />);
 
     // 通过 data-testid 获取元素
-    const testContainer = screen.getByTestId('viking-input-wrapper');
+    const testContainer = screen.getByTestId('didi-input-wrapper');
     expect(testContainer).toHaveClass('input-size-lg');
   });
 
@@ -35,7 +35,7 @@ describe('test Input component', () => {
     render(<Input placeholder="pend" prepend="https://" append=".com" />);
 
     // 获取容器元素
-    const testContainer = screen.getByTestId('viking-input-wrapper');
+    const testContainer = screen.getByTestId('didi-input-wrapper');
     expect(testContainer).toHaveClass('input-group', 'input-group-append', 'input-group-prepend');
 
     // 检查 prepend 和 append 元素

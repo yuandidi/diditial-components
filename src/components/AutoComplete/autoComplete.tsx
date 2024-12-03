@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/aria-role */
-import { ChangeEvent, FC, useEffect, useState, KeyboardEvent as ReactKeyboardEvent, useRef } from "react";
+import React,{ ChangeEvent, FC, useEffect, useState, KeyboardEvent as ReactKeyboardEvent, useRef } from "react";
 import Input, {InputProps} from "../Input/input";
 import Icon from "../Icon/icon";
 import useDebounce from "../../hooks/useDebounce";
@@ -91,7 +91,7 @@ export const AutoComplete: FC<AutoCompleteProps> = ({value, fetchSuggestions, on
   }
   const generateDropdown = () => {
     return (
-      <ul className="viking-suggestion-list">
+      <ul className="didi-suggestion-list">
         {suggestions.map((item, index) => {
           const cnames = classNames('suggestion-item', {
             'is-active': index === highlightIndex
@@ -106,7 +106,7 @@ export const AutoComplete: FC<AutoCompleteProps> = ({value, fetchSuggestions, on
     )
   }
   return (
-    <div className="viking-auto-complete" ref={componentRef}>
+    <div className="didi-auto-complete" ref={componentRef}>
       <Input
         value={inputValue}
         onChange={handleChange}

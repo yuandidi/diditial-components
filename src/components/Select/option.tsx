@@ -18,7 +18,7 @@ export interface SelectOptionProps {
 export const Option: FC<SelectOptionProps> = ({index, value, label, disabled, children }) => {
   const {onSelect, selectedValues}  = useContext(SelectContext)
   const isSelected = selectedValues.includes(value)
-  const classes = classNames('viking-select-item', {
+  const classes = classNames('didi-select-item', {
     'is-disabled': disabled,
     'is-selected': isSelected,
   })

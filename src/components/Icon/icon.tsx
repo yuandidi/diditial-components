@@ -1,3 +1,4 @@
+import React from "react"
 import {FontAwesomeIcon , FontAwesomeIconProps} from "@fortawesome/react-fontawesome"
 import classNames from "classnames"
 
@@ -7,9 +8,9 @@ export interface IconProps extends FontAwesomeIconProps {
   theme?: ThemeProps
 }
 
-function Icon (props: IconProps) {
+const Icon = (props: IconProps) => {
   const {className, theme, ...restProps} = props
-  const classes = classNames('viking-icon', className, {
+  const classes = classNames('didi-icon', className, {
     [`icon-${theme}`]: theme
   })
   return (

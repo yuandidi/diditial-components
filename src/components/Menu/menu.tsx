@@ -29,14 +29,14 @@ export const MenuContext = React.createContext<IMenuContext>({index: '0'})
  * 为网站提供导航功能的菜单。支持横向纵向两种模式，支持下拉菜单。
  * 
  * ```javascript
- * import { Menu } from 'vikingship'
+ * import { Menu } from 'didiship'
  * 
  * //然后可以使用 Menu.Item 和 Menu.Submenu 访问选项和子下拉菜单组件
  * ```
  */
 export function Menu({className, mode = 'horizontal', style, children, defaultIndex = '0', defaultOpenSubMenus = [], onSelect}: MenuProps) {
   const [currentActive, setCurrentActive] = useState(defaultIndex)
-  const classes = classNames('viking-menu', className, {
+  const classes = classNames('didi-menu', className, {
     'menu-vertical': mode === 'vertical',
     'menu-horizontal': mode !== 'vertical'
   })

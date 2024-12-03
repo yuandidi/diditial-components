@@ -1,3 +1,4 @@
+import React from 'react';
 import { CSSTransition } from 'react-transition-group'
 import { CSSTransitionProps } from 'react-transition-group/CSSTransition'
 
@@ -8,7 +9,7 @@ type TransitionProps = CSSTransitionProps & {
   wrapper?: boolean;
 };
 
-function Transition ({children, classNames, animation,wrapper,...restProps}: TransitionProps) {
+const Transition = ({children, classNames, animation,wrapper,...restProps}: TransitionProps) => {
   return (
     <CSSTransition
       classNames={classNames ? classNames : animation}

@@ -1,4 +1,4 @@
-.viking-menu {
+.didi-menu {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -49,7 +49,7 @@
       transform: rotate(180deg) !important;
     }
   }
-  .viking-submenu {
+  .didi-submenu {
     //display: none;
     list-style:none;
     padding-left: 0;
@@ -70,7 +70,7 @@
   >.menu-item {
     border-bottom: $menu-item-active-border-width solid transparent;
   }
-  .viking-submenu {
+  .didi-submenu {
     position: absolute;
     background: $white;
     z-index: 100;

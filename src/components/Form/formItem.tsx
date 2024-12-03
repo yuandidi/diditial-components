@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { FC, useContext, useEffect } from "react";
 import { FormContext } from "./form";
+import {CustomRule} from './useStore'
 import React from "react";
-import { RuleItem } from "async-validator";
 export type SomeRequired<T, K extends keyof T> = Required<Pick<T, K>> & Omit<T, K>
 export interface FormItemProps {
   name: string;
@@ -11,7 +11,7 @@ export interface FormItemProps {
   valuePropName?: string;
   trigger?: string;
   getValueFromEvent?: (event: any) => any;
-  rules?: RuleItem[];
+  rules?: CustomRule[];
   validateTrigger?: string;
 }
 
@@ -27,16 +27,25 @@ const FormItem: FC<FormItemProps> = ({
   validateTrigger='onBlur'
 }) => {
   const { dispatch, fields, initialValues, validateField } = useContext(FormContext)
-  const rowClass = classNames('viking-row', {
-    'viking-row-no-label': !label
+  const rowClass = classNames('didi-row', {
+    'didi-row-no-label': !label
   })
   useEffect(() => {
     const value = (initialValues && initialValues[name]) || ''
-    dispatch({type: 'addField', name, value: {label, name, value, rules, isValid: true}})
+    dispatch({type: 'addField', name, value: {label, name, value, rules: rules || [], errors:[], isValid: true}})
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  const fieldValue = fields[name]
-  const value = fieldValue && fieldValue.value 
+  const fieldState = fields[name]
+  const value = fieldState && fieldState.value
+  const errors = fieldState && fieldState.errors
+  const isRequired = rules?.some(rule => (typeof rule !== 'function') && rule.required)
+  const hasError = errors && errors.length > 0
+  const labelClass = classNames({
+    'didi-form-item-required': isRequired
+  })
+  const itemClass = classNames('didi-form-item-control',{
+    'didi-form-item-has-error': hasError
+  })
   const onValueUpdate = (e:any) => {
     const value = getValueFromEvent(e)
     dispatch({type: 'updateValue', name, value})
@@ -73,14 +82,22 @@ const FormItem: FC<FormItemProps> = ({
   return (
     <div className={rowClass}>
       { label &&
-        <div className='viking-form-item-label'>
-          <label title={label}>
+        <div className='didi-form-item-label'>
+          <label title={label} className={labelClass}>
             {label}
           </label>
         </div>
       }
-      <div className="viking-form-item">
-        {returnChildNode}
+      <div className="didi-form-item">
+        <div className={itemClass}>
+          {returnChildNode}
+        </div>
+        {
+          hasError && 
+          <div className='didi-form-item-explain'>
+            <span>{errors[0].message}</span>
+          </div>
+        }
       </div>
     </div>
   )

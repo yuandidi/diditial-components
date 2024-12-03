@@ -21,7 +21,7 @@ export interface TabsProps {
  * ### 引用方法
  * 
  * ~~~js
- * import { Tabs } from 'vikingship'
+ * import { Tabs } from 'didiship'
  * ~~~
  */
 
@@ -35,7 +35,7 @@ export const Tabs: FC<TabsProps> = ({defaultIndex = 0, className, onSelect, type
       }
     }
   }
-  const navClasses = classNames('viking-tabs-nav', {
+  const navClasses = classNames('didi-tabs-nav', {
     'nav-line': type === 'line',
     'nav-card': type === 'card'
   })
@@ -43,7 +43,7 @@ export const Tabs: FC<TabsProps> = ({defaultIndex = 0, className, onSelect, type
     return React.Children.map(children, (child, index) => {
       const childElement = child as React.FunctionComponentElement<TabItemProps>
       const {label, disabled} = childElement.props
-      const classes = classNames('viking-tabs-nav-item', {
+      const classes = classNames('didi-tabs-nav-item', {
         'is-active': activeIndex === index,
         'is-disabled': disabled
       })
@@ -66,11 +66,11 @@ export const Tabs: FC<TabsProps> = ({defaultIndex = 0, className, onSelect, type
     })
   }
   return (
-    <div className={`viking-tabs ${className}`}>
-      <ul className={navClasses} data-testid="viking-tabs-nav">
+    <div className={`didi-tabs ${className}`}>
+      <ul className={navClasses} data-testid="didi-tabs-nav">
         {renderNavLinks()}
       </ul>
-      <div className="viking-tabs-content"> 
+      <div className="didi-tabs-content"> 
         {renderContent()}
       </div>
     </div>

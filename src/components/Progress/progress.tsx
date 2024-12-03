@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React,{ FC } from "react";
 import { ThemeProps } from '../Icon/icon';
 
 export interface ProgressProps {
@@ -11,10 +11,10 @@ export interface ProgressProps {
 
 const Progress: FC<ProgressProps> = ({percent, strokeHeight = 15, showText = true,styles, theme = "primary"}) => {
   return (
-    <div className="viking-progress-bar" style={styles}>
-      <div className="viking-progress-bar-outer" style={{height: `${strokeHeight}px`}}>
+    <div className="didi-progress-bar" style={styles}>
+      <div className="didi-progress-bar-outer" style={{height: `${strokeHeight}px`}}>
         <div 
-          className={`viking-progress-bar-inner color-${theme}`}
+          className={`didi-progress-bar-inner color-${theme}`}
           style={{width: `${percent}%`}}
         >
           {showText && <span className="inner-text">{`${percent}%`}</span>}

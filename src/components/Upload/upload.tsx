@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import React,{ FC, useRef, useState } from "react";
 import UploadList from "./uploadList";
 import axios from "axios";
 import Dragger from "./dragger";
@@ -55,7 +55,7 @@ export interface UploadProps {
  * ### 引用方法
  * 
  * ~~~js
- * import { Upload } from 'vikingship'
+ * import { Upload } from 'didiship'
  * ~~~
  */
 export const Upload: FC<UploadProps> = ({
@@ -182,9 +182,9 @@ export const Upload: FC<UploadProps> = ({
   }
   return(
     <div
-      className="viking-upload-component"
+      className="didi-upload-component"
     >
-      <div className="viking-upload-input"
+      <div className="didi-upload-input"
         style={{display: 'inline-block'}}
         onClick={handleClick}
       >
@@ -195,8 +195,8 @@ export const Upload: FC<UploadProps> = ({
         children}
       </div>
       <input
-        className="viking-file-input"
-        data-testid="viking-file-input"
+        className="didi-file-input"
+        data-testid="didi-file-input"
         style={{display: 'none'}}
         type="file"
         ref={fileInput}

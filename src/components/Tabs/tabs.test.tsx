@@ -24,7 +24,7 @@ describe('test Tabs Component', () => {
     jest.clearAllMocks()
   })
   it('should render the correct default Tabs', () => {
-    expect(screen.queryByTestId('viking-tabs-nav')).toHaveClass('nav-line')
+    expect(screen.queryByTestId('didi-tabs-nav')).toHaveClass('nav-line')
     const activeElement = screen.queryByText('tab2')
     expect(activeElement).toBeInTheDocument()
     expect(activeElement).toHaveClass('is-active')

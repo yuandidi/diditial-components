@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
-import { forwardRef, InputHTMLAttributes } from "react";
+import React, { forwardRef, InputHTMLAttributes } from "react";
 import Icon from "../Icon/icon";
 type InputSize = 'lg' | 'sm';
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
@@ -21,11 +21,11 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
  * ### 引用方法
  * 
  * ~~~js
- * import { Input } from 'vikingship'
+ * import { Input } from 'didiship'
  * ~~~
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(({disabled, size, icon, prepend, append, ...restProps}, ref,) => {
-  const classes = classNames('viking-input-wrapper', {
+  const classes = classNames('didi-input-wrapper', {
     [`input-size-${size}`]: size,
     'input-group': prepend || append,
     'input-group-append': !!append,
@@ -43,12 +43,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({disabled, size, 
     restProps.value = fixControlledValue(restProps.value)
   }
   return (
-    <div className={classes} data-testid="viking-input-wrapper">
-      {prepend && <div className="-viking-input-group-prepend">{prepend}</div>}
+    <div className={classes} data-testid="didi-input-wrapper">
+      {prepend && <div className="-didi-input-group-prepend">{prepend}</div>}
       {icon && <div className="icon-wrapper"><Icon icon={icon} title={`title-${icon}`}/></div>}
       <input
         ref={ref}
-        className="viking-input-inner"
+        className="didi-input-inner"
         disabled={disabled}
         {...restProps}
       />

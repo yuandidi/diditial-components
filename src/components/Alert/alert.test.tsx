@@ -24,7 +24,7 @@ describe('test Alert component', () => {
   it('should render the correct default Alert',() => {
     render(<Alert {...TestProps}/>)
     expect(screen.getByText('title')).toBeInTheDocument()
-    expect(screen.getByTestId('viking-alert')).toHaveClass('viking-alert-default')
+    expect(screen.getByTestId('didi-alert')).toHaveClass('didi-alert-default')
     fireEvent.click(screen.getByText('times'))
     expect(TestProps.onClose).toHaveBeenCalled()
     //expect(screen.queryByText('title')).not.toBeInTheDocument()
@@ -32,7 +32,7 @@ describe('test Alert component', () => {
   it('should render the correct Alert based on different type and description', () => {
     render(<Alert {...typeProps}/>)
     expect(screen.queryByText('title')).toHaveClass('bold-title')
-    expect(screen.getByTestId('viking-alert')).toHaveClass('viking-alert-success')
+    expect(screen.getByTestId('didi-alert')).toHaveClass('didi-alert-success')
     expect(screen.getByText('hello')).toBeInTheDocument()
     expect(screen.queryByText('times')).not.toBeInTheDocument()
   })

@@ -1,13 +1,13 @@
-.viking-progress-bar {
+.didi-progress-bar {
   width: 100%;
   box-sizing: border-box;
-  .viking-progress-bar-outer {
+  .didi-progress-bar-outer {
     border-radius: $progress-border-radius;
     background-color: $progress-bg;
     overflow: hidden;
     position: relative;
   }
-  .viking-progress-bar-inner {
+  .didi-progress-bar-inner {
     position: absolute;
     left: 0;
     top: 0;

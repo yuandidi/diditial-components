@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React,{ FC } from "react";
 import Icon from "../Icon/icon";
 import { UploadFile } from "./upload";
 import Progress from "../Progress/progress";
@@ -10,10 +10,10 @@ interface UploadListProps {
 
 export const UploadList: FC<UploadListProps> = ({fileList, onRemove}) => {
   return (
-    <ul className="viking-upload-list">
+    <ul className="didi-upload-list">
       {fileList.map(item => {
         return (
-          <li className="viking-upload-list-item" key={item.uid}>
+          <li className="didi-upload-list-item" key={item.uid}>
             <span data-testid={`file-name-${item.status}`} className={`file-name file-name-${item.status}`}>
               <Icon icon="file-alt" theme="secondary"/>
               {item.name}

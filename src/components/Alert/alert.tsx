@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/aria-role */
 import classNames from "classnames";
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import Icon from "../Icon/icon";
 import Transition from "../Transition/transition";
 export type AlertType = 'success' | 'default' | 'danger' | 'warning'
@@ -22,14 +22,14 @@ export interface AlertProps {
  * ### 引用方法
  * 
  * ~~~js
- * import { Alert } from 'vikingship'
+ * import { Alert } from 'didiship'
  * ~~~
 */
 
 export const Alert:FC<AlertProps> = ({title, description, type = 'default', onClose, closable = true}) => {
   const [hide, setHide] = useState(false)
-  const cnames = classNames('viking-alert', {
-    [`viking-alert-${type}`]: type
+  const cnames = classNames('didi-alert', {
+    [`didi-alert-${type}`]: type
   })
   const handleClose = () => {
     if(onClose) {
@@ -44,10 +44,10 @@ export const Alert:FC<AlertProps> = ({title, description, type = 'default', onCl
       animation="zoom-in-top"
       unmountOnExit
     >
-      <div className={cnames} data-testid="viking-alert">
+      <div className={cnames} data-testid="didi-alert">
         <span className="bold-title">{title}</span>
-        {description && <p className="viking-alert-desc">{description}</p>}
-        {closable && <span className="viking-alert-close" onClick={handleClose}><Icon icon="times"/></span> }
+        {description && <p className="didi-alert-desc">{description}</p>}
+        {closable && <span className="didi-alert-close" onClick={handleClose}><Icon icon="times"/></span> }
     </div>
     </Transition>
   )

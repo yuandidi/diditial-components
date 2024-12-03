@@ -1,3 +1,4 @@
+import React from "react";
 import classNames from "classnames"
 import { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 export type ButtonSize = 'lg' | 'sm'; // 按钮尺寸
