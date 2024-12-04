@@ -12,6 +12,11 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        order: ['Start Page', '*'],  // 将 Start Page 排在最前面
+      },
+    },
   },
 };
 
