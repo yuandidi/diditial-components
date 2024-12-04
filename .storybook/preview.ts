@@ -1,23 +1,20 @@
-import type { Preview } from "@storybook/react";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-// preview.ts
-import '!style-loader!css-loader!resolve-url-loader!sass-loader!../src/styles/index.scss';
+import "../src/styles/index.scss"
 library.add(fas)
-const preview: Preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-    options: {
-      storySort: {
-        order: ['Start Page', '*'],  // 将 Start Page 排在最前面
-      },
+export const parameters = {
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
     },
   },
-};
-
-export default preview;
+  viewMode: 'docs',
+  options: {
+    storySort: {
+      order: ['Welcome', '第四章：Button', '第四章作业：Alert 组件', '第六章：Menu', '第六章作业：Tabs', '第七章：Icon 组件', '第九章：Input', 'AutoComplete 组件', '第九章作业：Select', '第十章：Upload'], 
+    },
+  },
+}
+export const tags = ['autodocs'];

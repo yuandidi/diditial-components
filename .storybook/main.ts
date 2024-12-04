@@ -1,47 +1,22 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
+module.exports = {
+  "stories": ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
 
-const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: [
-    "@storybook/preset-create-react-app",
-    "@storybook/addon-onboarding",
+  "addons": [
+    "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/preset-create-react-app",
+    "@chromatic-com/storybook"
   ],
-  typescript: {
-    reactDocgen: 'react-docgen-typescript', // 确保使用 TypeScript 解析器
-  },
-  framework: {
-    name: "@storybook/react-webpack5",
-    options: {},
-  },
-  staticDirs: ["..\\public"],
-  webpackFinal: async (config) => {
-    config.module?.rules?.push({
-      test: /\.scss$/,
-      use: [
-        'style-loader',
-        'css-loader',
-        {
-          loader: 'resolve-url-loader',
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true, // 必须启用 sourceMap 配合 resolve-url-loader
-          },
-        },
-        {
-          loader: require.resolve("react-docgen-typescript-loader"),
-        }
-      ],
-    },
-  );
-  
-    return config;
-  },
-  
-};
 
-export default config;
+  "framework": {
+    name: "@storybook/react-webpack5",
+    options: {}
+  },
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript"
+  }
+}
