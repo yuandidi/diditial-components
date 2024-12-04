@@ -101,11 +101,8 @@ function useStore(initialValues?: Record<string, any>) {
     } catch (e) {
       isValid = false
       const err = e as any
-      console.log('e',err.errors)
-      console.log('fields',err.fields)
       errors = err.errors
     } finally {
-      console.log('errors', isValid)
       dispatch({type: 'updateValidateResult', name, value: {isValid, errors}})
     }
   }
