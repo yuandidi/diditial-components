@@ -13,8 +13,8 @@ export const parameters = {
   viewMode: 'docs',
   options: {
     storySort: {
-      order: ['Welcome', '第四章：Button', '第四章作业：Alert 组件', '第六章：Menu', '第六章作业：Tabs', '第七章：Icon 组件', '第九章：Input', 'AutoComplete 组件', '第九章作业：Select', '第十章：Upload'], 
+      order: ['Start Page','Button', 'Alert', 'Menu', 'Tabs', 'Icon', 'Input', 'AutoComplete', 'Select', 'Upload']
     },
   },
+  tags: ['autodocs'],
 }
-export const tags = ['autodocs'];

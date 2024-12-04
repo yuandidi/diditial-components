@@ -8,7 +8,7 @@ export interface IconProps extends FontAwesomeIconProps {
   theme?: ThemeProps
 }
 
-const Icon = (props: IconProps) => {
+export const Icon = (props: IconProps) => {
   const {className, theme, ...restProps} = props
   const classes = classNames('didi-icon', className, {
     [`icon-${theme}`]: theme
