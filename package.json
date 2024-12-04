@@ -36,8 +36,10 @@
       "<rootDir>/node_modules/(?!lodash-es)"
     ]
   },
-  "hooks": {
-    "pre-commit": "npm run test:nowatch && npm run lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
+    }
   },
   "eslintConfig": {
     "extends": [
