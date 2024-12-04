@@ -1,0 +1,55 @@
+.didi-form {
+  .didi-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    &.didi-row-no-label {
+      flex-direction: row-reverse;
+    }
+    .didi-form-item-label {
+      flex-basis: 30%;
+      text-align: right;
+      padding-right: 20px;
+      >label{
+        margin-bottom: 0;
+      }
+      >label.didi-form-item-required:before {
+        display: inline-block;
+        margin-right: 4px;
+        color: $danger;
+        font-size: 14px;
+        font-family: SimSun,sans-serif;
+        line-height: 1;
+        content: "*";
+      }
+    }
+    .didi-form-item {
+      flex-basis: 70%;
+      position: relative;
+      .didi-input-wrapper {
+        margin-bottom: 0;
+      }
+      .didi-form-item-has-error.didi-form-item-control {
+        .didi-input-inner {
+          border: 1px solid $danger;
+          &:focus {
+            box-shadow: $input-focus-box-shadow-error;
+          }
+        }
+      }
+      .didi-form-item-explain {
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        line-height: 25px;
+        color: $danger;
+        min-width: 100px;
+      }
+    }
+  }
+  .didi-form-submit-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+  }
+}
