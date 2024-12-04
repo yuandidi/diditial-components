@@ -29,17 +29,13 @@
     "build-css": "sass ./src/styles/index.scss ./build/index.css",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublish": "npm run test:nowatch && npm run lint && npm run build"
+    "prepublish": "npm run test:nowatch && npm run lint && npm run build",
+    "prepare": "husky"
   },
   "jest": {
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!lodash-es)"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test:nowatch && npm run lint"
-    }
   },
   "eslintConfig": {
     "extends": [
