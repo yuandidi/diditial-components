@@ -1,12 +1,15 @@
 language: node_js
 node_js:
-  - "stable"
+  - "20"
+install:
+  - npm install
 cache:
   directories:
     - node_modules
 env:
   - CI=true
 script:
+  - npm run test
   - npm run build-storybook
 deploy:
   provider: pages
