@@ -1,46 +1,94 @@
-# Getting Started with Create React App
+# Diditial UI Component Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+一个基于React的现代UI组件库,使用TypeScript开发。
 
-## Available Scripts
+## 特性
 
-In the project directory, you can run:
+- 🎨 提供丰富的UI组件
+- 📦 基于TypeScript开发,提供完整的类型定义
+- 🎯 使用Storybook进行组件开发和文档展示
+- ⚡️ 支持按需加载
+- 🔧 支持主题定制
+- 📃 详细的文档和示例
 
-### `npm start`
+## 安装
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+使用npm: npm install diditial
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 本地开发
 
-### `npm test`
+### 环境要求
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js >= 16
+- npm >= 7
 
-### `npm run build`
+### 开发步骤
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. 克隆仓库
+2. 安装依赖
+3. 启动Storybook进行开发
+4. 构建组件库
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 可用的脚本命令
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `npm start` - 启动开发服务器
+- `npm run build` - 构建组件库
+- `npm run test` - 运行测试
+- `npm run storybook` - 启动Storybook开发环境
+- `npm run build-storybook` - 构建Storybook静态文件
+- `npm run lint` - 运行代码检查
+- `npm run build-es` - 构建ES模块版本
+- `npm run build-umd` - 构建UMD版本
 
-### `npm run eject`
+## 技术栈
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- React 18
+- TypeScript 4.9
+- Storybook 8
+- SCSS
+- Jest
+- ESLint
+- Prettier
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 目录结构
+diditial/
+├── src/ # 源代码目录
+│ ├── components/ # 组件目录
+│ ├── styles/ # 样式文件
+│ └── index.ts # 入口文件
+├── build/ # 构建输出目录
+├── dist/ # 打包输出目录
+├── .storybook/ # Storybook配置
+└── package.json # 项目配置文件
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 浏览器支持
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Chrome >= 60
+- Firefox >= 60
+- Safari >= 10
+- Edge >= 14
 
-## Learn More
+## 贡献指南
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork 项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交改动 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交Pull Request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 版本历史
+
+- 0.1.4 - 当前版本
+
+## 许可证
+
+MIT License
+
+## 作者
+
+元迪迪
+
+## 相关链接
+
+- [组件文档](https://didiyuan.github.io/diditial/)
+- [GitHub仓库](https://github.com/didiyuan/diditial-components)
